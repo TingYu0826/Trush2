@@ -1,0 +1,5 @@
+body { background: #f8f9fa; }
+h2 { letter-spacing: 2px; }
+.card { box-shadow: 0 2px 8px #0001; }
+#resultArea .card-header { font-size: 1.1rem; }
+
