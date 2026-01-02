@@ -75,6 +75,23 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.21.0</version>
+                <configuration>
+                    <!-- 使用內建 ruleset -->
+                    <rulesets>
+                        <ruleset>/rulesets/java/quickstart.xml</ruleset>
+                    </rulesets>
+
+                    <!-- 不因 violation 直接 fail build（很重要） -->
+                    <failOnViolation>false</failOnViolation>
+
+                    <!-- 顯示違規細節 -->
+                    <printFailingErrors>true</printFailingErrors>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
