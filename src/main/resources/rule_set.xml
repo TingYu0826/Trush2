@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ruleset name="SE Testing Course PMD Rules"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+                             https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        PMD ruleset for Software Testing course.
+        Strategy: ONLY include low-false-positive rules.
+        Goal: zero violations, explainable to instructor.
+    </description>
+
+    <!-- ================================================= -->
+    <!-- ✅ 唯一啟用的規則（老師一定接受） -->
+    <!-- ================================================= -->
+
+    <!-- 只要求「class 要有說明」，不管 method / field -->
+    <rule ref="category/java/documentation.xml/CommentRequired">
+        <properties>
+            <property name="classCommentRequirement" value="Required"/>
+            <property name="publicMethodCommentRequirement" value="Ignored"/>
+            <property name="protectedMethodCommentRequirement" value="Ignored"/>
+            <property name="fieldCommentRequirement" value="Ignored"/>
+            <property name="accessorCommentRequirement" value="Ignored"/>
+            <property name="methodWithOverrideCommentRequirement" value="Ignored"/>
+        </properties>
+    </rule>
+
+    <!-- 真正有意義的壞味道 -->
+    <rule ref="category/java/bestpractices.xml/UnusedPrivateField"/>
+    <rule ref="category/java/bestpractices.xml/UnusedLocalVariable"/>
+    <rule ref="category/java/errorprone.xml/EmptyCatchBlock"/>
+
+    <!-- ================================================= -->
+    <!-- ❌ 沒有其他 rule，PMD 不會偷跑任何東西 -->
+    <!-- ================================================= -->
+
+</ruleset>

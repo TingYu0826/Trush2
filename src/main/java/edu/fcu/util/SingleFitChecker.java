@@ -7,10 +7,8 @@ import java.util.List;
  * 判斷物品是否能以任一旋轉方向放入車廂。
  */
 public class SingleFitChecker {
-
     /**
      * 判斷物品是否能放入指定尺寸空間
-     *
      * @param itemL 物品長
      * @param itemW 物品寬
      * @param itemH 物品高
@@ -19,20 +17,13 @@ public class SingleFitChecker {
      * @param carH 車廂高
      * @return 是否可放入
      */
-    public static boolean canFit(
-            double itemL, double itemW, double itemH,
-            double carL, double carW, double carH
-    ) {
-        // 取得所有旋轉方向
-        List<double[]> orientations =
-                OrientationHelper.getAllOrientations(itemL, itemW, itemH);
-
-        for (double[] o : orientations) {
-            double l = o[0];
-            double w = o[1];
-            double h = o[2];
-
-            // 只要有一種方向能放入即通過
+    public static boolean canFit(final double itemL, final double itemW, final double itemH,
+                                 final double carL, final double carW, final double carH) {
+        final List<double[]> orientations = OrientationHelper.getAllOrientations(itemL, itemW, itemH);
+        for (final double[] o : orientations) {
+            final double l = o[0];
+            final double w = o[1];
+            final double h = o[2];
             if (l <= carL && w <= carW && h <= carH) {
                 return true;
             }

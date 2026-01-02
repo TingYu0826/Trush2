@@ -25,7 +25,7 @@ public class LoadController {
      * @return 派車分配結果（含成功與失敗）
      */
     @PostMapping("/check-load")
-    public ResponseEntity<DispatchResultDto> checkLoad(@RequestBody List<ItemDto> items) {
+    public ResponseEntity<DispatchResultDto> checkLoad(final @RequestBody List<ItemDto> items) {
         if (items == null || items.isEmpty()) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }

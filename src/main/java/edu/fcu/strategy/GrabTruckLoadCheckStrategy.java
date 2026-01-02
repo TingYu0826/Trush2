@@ -10,14 +10,20 @@ import java.util.List;
  * 僅依 points 模型分批，不得引用 Vehicle 的任何尺寸欄位。
  */
 public class GrabTruckLoadCheckStrategy implements LoadCheckStrategy {
+    /**
+     * 依 points 模型分批裝載。
+     * @param vehicle 車輛
+     * @param items 物品清單
+     * @return 裝載分配結果
+     */
     @Override
-    public GrabTruckAssignment checkLoad(Vehicle vehicle, List<Item> items) {
-        List<Item> loaded = new ArrayList<>();
+    public GrabTruckAssignment checkLoad(final Vehicle vehicle, final List<Item> items) {
+        final List<Item> loaded = new ArrayList<>();
         int currentPoints = 0;
-        for (Item item : items) {
+        for (final Item item : items) {
             // 僅接受 damaged==true
             if (!item.isDamaged()) break;
-            int itemPoints = GrabTruckPointCalculator.calcPoints(item);
+            final int itemPoints = GrabTruckPointCalculator.calcPoints(item);
             if (currentPoints + itemPoints > GrabTruckPointCalculator.MAX_POINTS_PER_GRAB_TRUCK) {
                 break;
             }
@@ -27,8 +33,13 @@ public class GrabTruckLoadCheckStrategy implements LoadCheckStrategy {
         return new GrabTruckAssignment(vehicle.getType(), 0, loaded, currentPoints, GrabTruckPointCalculator.MAX_POINTS_PER_GRAB_TRUCK);
     }
 
+    /**
+     * 僅接受 damaged==true
+     * @param item 物品
+     * @return 是否可裝載
+     */
     @Override
-    public boolean canAccept(Item item) {
+    public boolean canAccept(final Item item) {
         // 僅接受 damaged==true
         return item != null && item.isDamaged();
     }

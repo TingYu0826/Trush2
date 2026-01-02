@@ -46,8 +46,10 @@ public class Dispatcher {
      * 1. DTO → Item
      * 2. 先嘗試抓斗車（逐件）
      * 3. 剩餘物品再用平板車（可多車）
+     * @param itemDtos 物品 DTO 清單
+     * @return 派車分配結果
      */
-    public List<VehicleAssignment> dispatch(List<ItemDto> itemDtos) {
+    public List<VehicleAssignment> dispatch(final List<ItemDto> itemDtos) {
         // 依 prompt.md，僅以 damaged 分流
         List<Item> items = itemDtos.stream()
                 .map(dto -> new Item(
@@ -106,8 +108,10 @@ public class Dispatcher {
      * 2. 先嘗試抓斗車（逐件）
      * 3. 剩餘物品再用平板車（可多車）
      * 4. 若有無法派車，記錄於 unassignedItems
+     * @param itemDtos 物品 DTO 清單
+     * @return 派車分配結果（含未分配物品）
      */
-    public DispatchResultDto dispatchWithUnassigned(List<ItemDto> itemDtos) {
+    public DispatchResultDto dispatchWithUnassigned(final List<ItemDto> itemDtos) {
         List<Item> items = itemDtos.stream()
                 .map(dto -> new Item(
                         dto.getLength(),
