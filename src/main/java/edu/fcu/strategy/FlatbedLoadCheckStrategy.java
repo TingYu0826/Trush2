@@ -31,7 +31,7 @@ public class FlatbedLoadCheckStrategy implements LoadCheckStrategy {
      */
     private boolean canFitWithRotation(Vehicle vehicle, Item item) {
         double usableLength = vehicle.getNominalLength() * 0.9;
-        double usableWidth  = vehicle.getNominalWidth() * 0.9;
+        double usableWidth  = vehicle.getNominalWidth(); // 不再打折
         List<double[]> orientations = OrientationHelper.getAllOrientations(
                 item.getLength() * ITEM_SCALE,
                 item.getWidth() * ITEM_SCALE,
@@ -58,7 +58,7 @@ public class FlatbedLoadCheckStrategy implements LoadCheckStrategy {
     @Override
     public FlatbedAssignment checkLoad(Vehicle vehicle, List<Item> items) {
         double usableLength = vehicle.getNominalLength() * 0.9;
-        double usableWidth  = vehicle.getNominalWidth() * 0.9;
+        double usableWidth  = vehicle.getNominalWidth(); // 不再打折
         List<Item> loaded = new ArrayList<>();
         double usedLength = 0;
         for (Item item : items) {

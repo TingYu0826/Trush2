@@ -1,0 +1,11 @@
+name,length,width,height,category,damaged,expectedVehicle,expectedTruckCountOrPoints
+抓斗車99點,1.0,1.0,1.0,金屬櫃,true,GRAB_TRUCK,1
+抓斗車100點,1.0,1.0,1.0,金屬櫃,true,GRAB_TRUCK,1
+抓斗車101點,1.0,1.0,1.0,金屬櫃,true,GRAB_TRUCK,2
+平板車臨界UnstableBoundary,2.85,1.8,1.0,沙發,false,UNASSIGNED,0
+平板車臨界不可放,2.93,1.8,1.0,沙發,false,UNASSIGNED,0
+尺寸0,0.0,0.0,0.0,沙發,false,UNASSIGNED,0
+極小值,0.01,0.01,0.01,沙發,false,FLATBED_TRUCK,1
+極大值,10.0,10.0,10.0,超大,false,UNASSIGNED,0
+旋轉剛好可放,1.8,2.0,0.6,衣櫃,false,FLATBED_TRUCK,1
+旋轉剛好不可放,1.8,2.0,2.0,衣櫃,false,UNASSIGNED,0

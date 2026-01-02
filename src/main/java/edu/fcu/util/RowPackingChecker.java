@@ -35,4 +35,11 @@ public class RowPackingChecker {
     public static boolean exceeds(double totalLength, double threshold) {
         return totalLength > threshold;
     }
+
+    /**
+     * 判斷單件物品是否可放入條帶（僅檢查長寬）
+     */
+    public static boolean canFitRowPacking(double usableLength, double usableWidth, double itemLength, double itemWidth) {
+        return itemLength <= usableLength && itemWidth <= usableWidth;
+    }
 }

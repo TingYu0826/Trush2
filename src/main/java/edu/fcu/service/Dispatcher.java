@@ -120,15 +120,18 @@ public class Dispatcher {
 
         List<Item> damagedItems = new ArrayList<>();
         List<Item> intactItems = new ArrayList<>();
+        List<UnassignedItemDto> unassigned = new ArrayList<>();
+        // 驗證資料正確性：長寬高>0且類別不為空
         for (Item item : items) {
-            if (item.isDamaged()) {
+            if (item.getLength() <= 0 || item.getWidth() <= 0 || item.getHeight() <= 0 || item.getCategory() == null || item.getCategory().trim().isEmpty()) {
+                unassigned.add(new UnassignedItemDto(toDto(item), "INVALID_INPUT"));
+            } else if (item.isDamaged()) {
                 damagedItems.add(item);
             } else {
                 intactItems.add(item);
             }
         }
         List<VehicleAssignment> results = new ArrayList<>();
-        List<UnassignedItemDto> unassigned = new ArrayList<>();
         // 抓斗車分批（points）
         LoadCheckStrategy grabStrategy = strategyMap.get(VehicleType.GRAB_TRUCK);
         int grabIndex = 1;

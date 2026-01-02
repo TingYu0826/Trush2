@@ -1,0 +1,11 @@
+name,length,width,height,category,damaged,expectedVehicle,expectedTruckCountOrPoints
+床墊正常,2.0,1.5,0.3,床墊,false,FLATBED_TRUCK,1
+沙發正常,2.2,0.9,0.8,沙發,false,FLATBED_TRUCK,1
+衣櫃可躺放,1.8,0.6,2.0,木製衣櫃,false,FLATBED_TRUCK,1
+冰箱破損,1.2,0.7,1.8,冰箱,true,GRAB_TRUCK,1
+金屬櫃破損,1.5,0.7,1.8,金屬櫃,true,GRAB_TRUCK,1
+超大物件,10.0,10.0,1.0,超大,false,UNASSIGNED,0
+負值長,0.0,1.0,1.0,沙發,false,UNASSIGNED,0
+空類別,1.0,1.0,1.0,,false,UNASSIGNED,0
+抓斗車極限,1.0,1.0,1.0,金屬櫃,true,GRAB_TRUCK,1
+平板車極限UnstableBoundary,2.85,1.8,1.8,沙發,false,UNASSIGNED,0
