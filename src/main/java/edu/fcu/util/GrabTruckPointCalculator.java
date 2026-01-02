@@ -35,4 +35,3 @@ public class GrabTruckPointCalculator {
         return (int)Math.ceil(basePoints * factor);
     }
 }
-

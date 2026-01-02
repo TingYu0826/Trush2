@@ -80,7 +80,7 @@ public class Dispatcher {
             GrabTruckAssignment va = (GrabTruckAssignment) grabStrategy.checkLoad(grab, grabQueue);
             if (va.getItems().isEmpty()) break;
             results.add(new GrabTruckAssignment(
-                grab.getType(), grabIndex, va.getItems(), va.getUsedPoints(), va.getMaxPoints()
+                    grab.getType(), grabIndex, va.getItems(), va.getUsedPoints(), va.getMaxPoints()
             ));
             grabQueue.removeAll(va.getItems());
             grabIndex++;
@@ -94,7 +94,7 @@ public class Dispatcher {
             FlatbedAssignment va = (FlatbedAssignment) flatbedStrategy.checkLoad(flatbed, flatbedQueue);
             if (va.getItems().isEmpty()) break;
             results.add(new FlatbedAssignment(
-                flatbed.getType(), flatbedIndex, va.getItems(), va.getTotalLength(), va.getLoadRate()
+                    flatbed.getType(), flatbedIndex, va.getItems(), va.getTotalLength(), va.getLoadRate()
             ));
             flatbedQueue.removeAll(va.getItems());
             flatbedIndex++;
@@ -147,12 +147,12 @@ public class Dispatcher {
                 // 將剩餘無法派車的 damaged 物件記錄
                 for (Item item : grabQueue) {
                     unassigned.add(new UnassignedItemDto(
-                        toDto(item), "CATEGORY_NOT_ALLOWED_OR_SIZE_EXCEED"));
+                            toDto(item), "CATEGORY_NOT_ALLOWED_OR_SIZE_EXCEED"));
                 }
                 break;
             }
             results.add(new GrabTruckAssignment(
-                grab.getType(), grabIndex, va.getItems(), va.getUsedPoints(), va.getMaxPoints()
+                    grab.getType(), grabIndex, va.getItems(), va.getUsedPoints(), va.getMaxPoints()
             ));
             grabQueue.removeAll(va.getItems());
             grabIndex++;
@@ -173,7 +173,7 @@ public class Dispatcher {
                 break;
             }
             results.add(new FlatbedAssignment(
-                flatbed.getType(), flatbedIndex, va.getItems(), va.getTotalLength(), va.getLoadRate()
+                    flatbed.getType(), flatbedIndex, va.getItems(), va.getTotalLength(), va.getLoadRate()
             ));
             flatbedQueue.removeAll(va.getItems());
             flatbedIndex++;
