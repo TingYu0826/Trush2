@@ -344,3 +344,21 @@
 - results.add(...), grabQueue.removeAll(...), grabIndex++
 ### 說明
 - 兩個測試分別覆蓋抓斗車流程所有分支，Jacoco coverage 應提升
+
+---
+
+## [2026-01-02 08:30] Dispatcher.createVehicle() default 分支覆蓋
+- 新增 DispatcherEntryPointTest.testCreateVehicleUnsupportedType
+- 覆蓋 createVehicle() switch default: throw IllegalArgumentException
+- 原本未覆蓋原因：production code 僅允許 GRAB_TRUCK/FLATBED_TRUCK，default 屬於防禦性分支
+- 現在以 null 傳入觸發，確保 JaCoCo branch coverage 100%
+
+---
+
+## [2026-01-02 09:05] LoadControllerTest 分支覆蓋補強
+- 新增 testCheckLoadNullBody：覆蓋 items == null 分支，原本未覆蓋 null body。
+- 新增 testCheckLoadWidthZero：覆蓋 width <= 0 分支，原本僅測 length。
+- 新增 testCheckLoadHeightNegative：覆蓋 height < 0 分支，原本未覆蓋負值。
+- 新增 testCheckLoadCategoryNull：覆蓋 category == null 分支，原本未覆蓋。
+- 新增 testCheckLoadMixedValidInvalid：覆蓋多筆資料混合合法與非法，確保 for 迴圈每個 item 都檢查。
+- 所有 Controller if/else/return branch 均已被測試，Jacoco coverage 達標。

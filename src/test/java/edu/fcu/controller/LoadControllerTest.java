@@ -81,4 +81,54 @@ class LoadControllerTest {
                 .content(invalidJson))
                 .andExpect(status().isBadRequest());
     }
+
+    @Test
+    @DisplayName("body 為 null → 400 Bad Request")
+    void testCheckLoadNullBody() throws Exception {
+        mockMvc.perform(post("/api/check-load")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("width = 0 → 400 Bad Request")
+    void testCheckLoadWidthZero() throws Exception {
+        String json = "[{\"length\":2.0,\"width\":0,\"height\":1.0,\"category\":\"沙發\",\"damaged\":false}]";
+        mockMvc.perform(post("/api/check-load")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("height < 0 → 400 Bad Request")
+    void testCheckLoadHeightNegative() throws Exception {
+        String json = "[{\"length\":2.0,\"width\":1.0,\"height\":-1.0,\"category\":\"沙發\",\"damaged\":false}]";
+        mockMvc.perform(post("/api/check-load")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("category = null → 400 Bad Request")
+    void testCheckLoadCategoryNull() throws Exception {
+        String json = "[{\"length\":2.0,\"width\":1.0,\"height\":1.0,\"category\":null,\"damaged\":false}]";
+        mockMvc.perform(post("/api/check-load")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    @DisplayName("混合合法與非法資料 → 400 Bad Request")
+    void testCheckLoadMixedValidInvalid() throws Exception {
+        String json = "[" +
+                "{\"length\":2.0,\"width\":1.0,\"height\":1.0,\"category\":\"沙發\",\"damaged\":false}," +
+                "{\"length\":0,\"width\":1.0,\"height\":1.0,\"category\":\"沙發\",\"damaged\":false}]";
+        mockMvc.perform(post("/api/check-load")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(json))
+                .andExpect(status().isBadRequest());
+    }
 }
