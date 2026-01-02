@@ -362,3 +362,12 @@
 - 新增 testCheckLoadCategoryNull：覆蓋 category == null 分支，原本未覆蓋。
 - 新增 testCheckLoadMixedValidInvalid：覆蓋多筆資料混合合法與非法，確保 for 迴圈每個 item 都檢查。
 - 所有 Controller if/else/return branch 均已被測試，Jacoco coverage 達標。
+
+---
+
+## [2026-01-02 09:10] GrabTruckLoadCheckStrategyTest 分支覆蓋補強
+- 新增 testCheckLoadPointsExceed：覆蓋 points 超過上限時 break 分支。
+- 新增 testCheckLoadEmptyList：覆蓋空清單直接回傳分支。
+- 新增 testCheckLoadFirstNotDamaged：覆蓋第一件非 damaged 直接 break 分支。
+- 新增 testCheckLoadJustFull：覆蓋多件物品剛好累加到 100 分的臨界分支。
+- 所有 checkLoad 主要 if/else/return branch 均已被測試，Jacoco coverage 達標。
